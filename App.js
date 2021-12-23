@@ -1,111 +1,48 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// Screens
+import Home from './src/screens/Home';
+import Signup from './src/screens/Signup';
+import Login from './src/screens/Login';
 
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
 export default App;
+
+/*
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>App Screen</Text>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+        doloremque veritatis sint praesentium totam. Facilis, quas excepturi
+        eveniet optio necessitatibus facere earum nisi dolor praesentium
+        explicabo! Repellat numquam, illum ipsum quasi qui, suscipit deleniti
+        excepturi optio asperiores debitis eaque ipsa vel porro sunt molestiae
+        dicta quibusdam dolorem eius. Consequatur nulla expedita necessitatibus
+        voluptatem rem animi porro voluptatum iusto dignissimos, temporibus
+        ducimus blanditiis voluptates. Ducimus accusamus recusandae, fugit
+        consequuntur, cupiditate eveniet officiis fuga iure vitae quia aut
+        nesciunt dolorem atque itaque repudiandae? Atque rem officiis similique
+        non cupiditate eaque repudiandae, omnis, sed veniam ea saepe minima iure
+        fugiat aperiam maiores reiciendis!
+      </Text>
+    </View>
+*/
